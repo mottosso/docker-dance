@@ -37,8 +37,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libx11-dev \
     xorg-dev \
+    autoconf \
     freeglut3-dev \
-    libpng12-dev \
     libjpeg-dev \
     build-essential \
     mesa-utils
@@ -55,6 +55,7 @@ RUN tar -xf ${HOME}/fltk-2.0.x-alpha-r9296.tar.gz -C ${DANCE_DIR}/extensions && 
 # ODE
 RUN unzip -o ${HOME}/ode-0.11.1.zip -d ${DANCE_DIR}/extensions && \
     cd ${DANCE_DIR}/extensions/ode-0.11.1 && \
+    autoconf && \
     ./configure -prefix=${DANCE_DIR} \
         --enable-double-precision \
         -enable-shared && \
